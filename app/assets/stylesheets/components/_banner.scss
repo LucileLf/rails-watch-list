@@ -1,0 +1,16 @@
+.banner {
+  justify-content: space-between;
+  text-align: center;
+  color: white;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://media.istockphoto.com/id/149066514/fr/photo/pop-corn.jpg?s=612x612&w=0&k=20&c=2iS3o1siZVWZZe51glveSF4nRhhaovzUsULTgA8nqrc=');
+  padding: 8px;
+  margin-bottom: 20px;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}

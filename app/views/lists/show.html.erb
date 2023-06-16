@@ -1,0 +1,16 @@
+<h1> <%= @list.name %> movies</h1>
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+  <div class="card-category">
+    <li> <%= bookmark.movie.title %> </li>
+    <i class="fa-solid fa-trash" style="color: #ff4747;"></i>
+      <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{bookmark.movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
+
+  </div>
+  <p> <%= bookmark.comment %> </p>
+  <% end %>
+</ul>
+
+<a class="btn btn-gradient" href="#">Add a new bookmark</a>
+<%= link_to "Bookmark a new movie", new_list_bookmark_path(@list)  %>
+<%= link_to "Back to my lists", lists_path(@list) %>
