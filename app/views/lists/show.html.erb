@@ -1,15 +1,26 @@
-<h1> <%= @list.name %> movies</h1>
-<ul>
-  <% @bookmarks.each do |bookmark| %>
-  <div class="card-category" style="background-image: url(<%= image_path bookmark.movie.poster_url %>)">
-    <li> <%= bookmark.movie.title %> </li>
-    <i class="fa-solid fa-trash" style="color: #ff4747;"></i>
-      <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{bookmark.movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
-  </div>
-  <p> <%= bookmark.comment %> </p>
-  <% end %>
-</ul>
 
-<a class="btn btn-gradient" href="#">Add a new bookmark</a>
-<%= link_to "Bookmark a new movie", new_list_bookmark_path(@list)  %>
-<%= link_to "Back to my lists", lists_path(@list) %>
+<div>
+  <h1> <%= @list.name %> movies</h1>
+</div>
+
+<div class="cards">
+    <% @bookmarks.each do |bookmark| %>
+      <div class="movie-card-category">
+        <p class="movie-title"> <%= bookmark.movie.title %> </p>
+
+        <%= image_tag bookmark.movie.poster_url, alt: "movie poster", class: "movie-poster" %>
+
+        <p class="comment"> <%= bookmark.comment %> </p>
+
+        <%= link_to bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{bookmark.movie.title} from your #{@list.name} list"}, class: 'text-danger' do %>
+            <%= content_tag :i, "", class: "fa-solid fa-trash", style: "color: whitesmoke" %>
+        <% end %>
+      </div>
+    <% end %>
+</div>
+
+<div>
+  <a class="btn btn-gradient" href="<%= new_list_bookmark_path(@list) %>">Bookmark a new movie</a>
+  <a class="btn btn-gradient" href="<%= new_list_bookmark_path(@list) %>">Review this list!</a>
+  <%= link_to "Back to my lists", lists_path(@list) %>
+</div>

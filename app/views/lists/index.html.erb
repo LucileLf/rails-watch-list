@@ -1,28 +1,26 @@
 <div>
   <div class="banner">
     <h1>Use <strong>bookmarks</strong> to create themed <strong>movie lists</strong></h1>
-    <a class="btn btn-gradient">Add a new list now</a>
+    <a class="btn btn-gradient" href="<%= new_list_path %>">Add a new list now</a>
+
   </div>
 </div>
 
 <div>
 
-<div class="container"></div>
+<div class="container">
   <div class="d-flex align-items-center">
-    <img class="avatar-large" src="https://media.posterlounge.com/img/products/760000/750641/750641_poster_l.jpg" alt="my face">
-
+    <%= cl_image_tag "mk5wubtukhj1knwpfppw", alt: "my face", class:"avatar-large"%>
     <h1>My lists</h1>
   </div>
 
   <div class="cards">
     <% @lists.each do |list| %>
-    <div class="card-category">
+    <div class="card-category" style="background-image: url(<%= cl_image_path list.photo.key%>">
       <%= link_to list.name, list_path(list) %>
     </div>
     <% end %>
   </div>
-
-  <%= link_to "Add a new list", new_list_path %>
-
+  <div>
   </div>
 </div>

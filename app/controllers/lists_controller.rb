@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
-
   def home
+
   end
 
   def index
@@ -8,6 +8,7 @@ class ListsController < ApplicationController
   end
 
   def def_movies
+
   end
 
   def show
@@ -21,13 +22,14 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
-    @list.save
-    redirect_to lists_path
+    if @list.save
+      redirect_to lists_path
+    end
   end
 
   private
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end
